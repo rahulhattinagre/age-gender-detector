@@ -1,0 +1,88 @@
+{% extends "home.html" %}
+{% block title %}Detector{% endblock %}
+{% block main %}
+<h2>Real-Time Age and Gender Detection</h2>
+<div style="position: relative;">
+    <video id="webcam-video" width="640" height="480" autoplay style="display: block;"></video>
+    <canvas id="overlay-canvas" width="640" height="480" style="position: absolute; top: 0; left: 0;"></canvas>
+</div>
+
+<script>
+    const video = document.getElementById('webcam-video');
+    const canvas = document.getElementById('overlay-canvas');
+    const context = canvas.getContext('2d');
+    const API_ENDPOINT = '{{ url_for("process_frame") }}';
+
+    // Create a temporary canvas for capturing frames to send to the backend
+    const tempCanvas = document.createElement('canvas');
+    const tempContext = tempCanvas.getContext('2d');
+    tempCanvas.width = 640;
+    tempCanvas.height = 480;
+
+    // 1. Start the webcam
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+                video.onloadedmetadata = () => {
+                    // Start the periodic detection process once video loads
+                    setInterval(sendFrameForDetection, 500); // Detect every 500ms
+                };
+            })
+            .catch(function (error) {
+                console.error("Error accessing webcam: " + error);
+                alert("Cannot access webcam. Please check permissions.");
+            });
+    }
+
+    // 2. Capture a frame and send to backend
+    function sendFrameForDetection() {
+        // Draw the current video frame onto the TEMPORARY canvas
+        tempContext.drawImage(video, 0, 0, tempCanvas.width, tempCanvas.height);
+
+        // Convert the temporary canvas content to a Base64 image
+        const base64Image = tempCanvas.toDataURL('image/jpeg');
+
+        fetch(API_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ image: imageData })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.results) {
+                    drawResults(data.results);
+                }
+            })
+            .catch(error => console.error('Error fetching detection results:', error));
+    }
+
+    // 3. Draw results (bounding box and text)
+    function drawResults(results) {
+        // ALWAYS CLEAR THE OVERLAY CANVAS BEFORE DRAWING NEW RESULTS
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        context.font = '24px Arial';
+        context.lineWidth = 3;
+
+        results.forEach(result => {
+            const [x1, y1, x2, y2] = result.box;
+            const label = `${result.gender}, ${result.age}`;
+
+            // Draw bounding box
+            context.strokeStyle = result.gender === 'Male' ? 'blue' : 'magenta';
+            context.strokeRect(x1, y1, x2 - x1, y2 - y1);
+
+            // Draw background for text
+            context.fillStyle = context.strokeStyle;
+            context.fillRect(x1, y1 - 25, context.measureText(label).width + 10, 30);
+
+            // Draw text
+            context.fillStyle = 'white';
+            context.fillText(label, x1 + 5, y1 - 5);
+        });
+    }
+</script>
+{% endblock %}

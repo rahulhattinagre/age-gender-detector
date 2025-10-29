@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Age & Gender Detector - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="home-body">
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Project Logo">
+            <h1>Age & Gender Detector</h1>
+        </div>
+        <nav>
+            {% if current_user.is_authenticated %}
+            <p>Welcome, {{ current_user.username }}   <a href="{{ url_for('logout') }}">Logout</a></p>
+            {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signup') }}">Signup</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main class="home-main">
+        <h1>Welcome</h1>
+        <h2>Real-Time Age and Gender Detection System</h2>
+        <p>Log in to start the face analysis.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-container">
+            {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </main>
+    <footer>
+        <div class="footer-content">
+
+            <div class="footer-left">
+                &copy; 2025 Real-Time Age & Gender Detector |
+                <a href="#" style="color: #3498db; text-decoration: none;">Privacy & Disclaimer</a>
+            </div>
+
+            <div class="social-links">
+                <a href="YOUR_GITHUB_URL" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="YOUR_LINKEDIN_URL" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>

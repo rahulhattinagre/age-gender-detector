@@ -1,0 +1,4 @@
+Flask
+Flask-Login
+opencv-python
+numpy
