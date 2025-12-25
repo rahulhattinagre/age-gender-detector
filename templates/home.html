@@ -3,61 +3,86 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Age & Gender Detector - Home</title>
+    <title>Age & Gender Detector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("profileDropdown");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    window.addEventListener("click", function (event) {
+        if (!event.target.classList.contains("profile-pic")) {
+            const dropdown = document.getElementById("profileDropdown");
+            if (dropdown) dropdown.style.display = "none";
+        }
+    });
+</script>
+
 <body class="home-body">
-    <header>
-        <div class="logo">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Project Logo">
-            <h1>Age & Gender Detector</h1>
-        </div>
-        <nav>
-            {% if current_user.is_authenticated %}
-            <p>Welcome, {{ current_user.username }}   <a href="{{ url_for('logout') }}">Logout</a></p>
-            {% else %}
-            <a href="{{ url_for('login') }}">Login</a>
-            <a href="{{ url_for('signup') }}">Signup</a>
-            {% endif %}
-        </nav>
-    </header>
 
-    <main class="home-main">
-        <h1>Welcome</h1>
-        <h2>Real-Time Age and Gender Detection System</h2>
-        <p>Log in to start the face analysis.</p>
+<header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        <h1>Age & Gender Detector</h1>
+    </div>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <div class="flash-container">
-            {% for category, message in messages %}
-            <div class="flash {{ category }}">{{ message }}</div>
-            {% endfor %}
+    <div class="nav-links">
+        {% if current_user.is_authenticated %}
+
+        <div class="user-navbar">
+            <span class="welcome-text">
+                Welcome {{ current_user.username }}
+            </span>
+
+            <div class="profile-menu">
+                <img src="{{ url_for('static', filename='logo.png') }}"
+                     class="profile-pic"
+                     onclick="toggleMenu()">
+
+                <div class="dropdown" id="profileDropdown">
+                    <a href="{{ url_for('profile') }}">Profile</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
         </div>
+
+        {% else %}
+
+        <a href="{{ url_for('login') }}" class="nav-btn login-btn">Login</a>
+        <a href="{{ url_for('signup') }}" class="nav-btn signup-btn">Signup</a>
+
         {% endif %}
-        {% endwith %}
-    </main>
-    <footer>
-        <div class="footer-content">
+    </div>
+</header>
 
-            <div class="footer-left">
-                &copy; 2025 Real-Time Age & Gender Detector |
-                <a href="#" style="color: #3498db; text-decoration: none;">Privacy & Disclaimer</a>
-            </div>
+<main class="home-main">
+    {% block main %}
+        {% if not current_user.is_authenticated %}
+            <h1>Welcome</h1>
+            <p>Log in to start the face analysis.</p>
+        {% endif %}
+    {% endblock %}
+</main>
 
-            <div class="social-links">
-                <a href="YOUR_GITHUB_URL" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="YOUR_LINKEDIN_URL" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-
+<footer>
+    <div class="footer-content">
+        <div class="footer-left">
+            © 2026 Real-Time Age & Gender Detector |
+            <a href="#">Privacy & Disclaimer</a>
         </div>
-    </footer>
-</body>
 
+        <div class="social-links">
+            <a href="#">🔗</a>
+            <a href="#">🐦</a>
+            <a href="#">💼</a>
+        </div>
+    </div>
+</footer>
+
+</body>
 </html>
+    

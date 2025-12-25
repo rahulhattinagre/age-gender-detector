@@ -1,14 +1,90 @@
-/* --------------------------- */
-/* Existing Auth Page Styling  */
-/* (Keep your code above here) */
-/* --------------------------- */
+/* ---------------------------
+   AUTH PAGES (LOGIN & SIGNUP)
+--------------------------- */
 
-/* --------------------------- */
-/* Home Page Styling (same theme as Auth Pages) */
-/* --------------------------- */
+body.auth-body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Auth Card */
+.auth-card {
+    background: #ffffff;
+    width: 360px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+/* Title */
+.auth-card h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Inputs */
+.auth-card input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.auth-card input:focus {
+    outline: none;
+    border-color: #2a5298;
+}
+
+/* Button */
+.auth-card button {
+    width: 100%;
+    padding: 10px;
+    background: #2a5298;
+    border: none;
+    color: white;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.auth-card button:hover {
+    background: #1e3c72;
+}
+
+/* Footer text inside card */
+.auth-card p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-card a {
+    color: #2a5298;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ---------------------------
+   FOOTER
+--------------------------- */
+
+footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #e0e0e0;
+}
+/* ================= HOME PAGE ================= */
 
 body.home-body {
-    background-color: #2c3e50; /* Same dark theme */
+    background-color: #2c3e50;
     color: #fff;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -23,7 +99,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -35,253 +110,474 @@ header {
 .logo img {
     width: 60px;
     height: 60px;
-    border-radius: 10px;
 }
 
-.logo h1 {
-    font-size: 26px;
+nav a {
     color: #ecf0f1;
-    margin: 0;
-}
-
-nav a,
-nav p {
-    color: #ecf0f1;
+    margin-left: 20px;
     text-decoration: none;
     font-weight: bold;
-    margin-left: 15px;
-    font-size: 16px;
 }
 
 nav a:hover {
-    text-decoration: underline;
     color: #1abc9c;
 }
 
-main.home-main {
-    flex-grow: 1;
+.home-main {
+    flex: 1;
     text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    padding: 120px 20px;
 }
 
 .home-main h2 {
-    font-size: 30px;
-    color: #ecf0f1;
-    margin-bottom: 20px;
+    font-size: 32px;
+    margin-bottom: 15px;
 }
 
 .home-main p {
-    color: #bdc3c7;
     font-size: 18px;
+    color: #bdc3c7;
 }
 
-/* Flash message styling for Home Page */
-.flash-container {
-    margin-top: 30px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+footer {
+    background-color: #2c3e50;
+    padding: 15px 40px;
+    border-top: 1px solid #34495e;
 }
 
-.flash {
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.flash.success {
-    background-color: #27ae60;
-    color: #fff;
-}
-
-.flash.danger {
-    background-color: #e74c3c;
-    color: #fff;
-}
-
-.flash.info {
-    background-color: #2980b9;
-    color: #fff;
-}
-
-/* Styling for Social Media Icons */
-.social-links a {
-    /* Sets the color of the icons */
-    color: #ecf0f1;
-
-    /* Makes the icons a little bigger */
-    font-size: 1.5em;
-
-    /* 🚀 THIS IS THE KEY CHANGE FOR SEPARATION 🚀 */
-    /* It adds space between the GitHub icon and the LinkedIn icon */
-    margin-left: 15px;
-
-    /* Smooth transition for the hover effect */
-    transition: color 0.3s;
-}
-
-/* Hover effect for a better user experience */
-.social-links a:hover {
-    color: #3498db;
-}
-
-/* Ensure the Flexbox alignment for the whole footer is correct */
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    margin: 0 auto;
 }
 
-/* Make sure the text link in the footer is styled outside of the icon class */
 .footer-left a {
     color: #3498db;
     text-decoration: none;
 }
-
-/* Styling for the Footer Container */
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-
-    /* 🚀 INCREASED PADDING FOR MORE HEIGHT 🚀 */
-    padding: 20px 0px;
-    border-top: 1px solid #34495e;
-    font-size: 0.85em;
-}
-
-/* Keep the rest of your CSS for .footer-content and .social-links 
-   the same to maintain the left/right corner layout. */
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin: 0 auto;
-}
-/* --------------------------- */
-/* LOGIN PAGE STYLING */
-/* --------------------------- */
-
-body.login-body {
-    background-color: #2c3e50; /* dark background */
-    font-family: 'Poppins', Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-/* Center white box */
-.login-container {
-    background-color: #fff;
-    width: 380px;
-    padding: 40px 35px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
-}
-
-/* User icon */
-.login-icon {
-    font-size: 70px;
-    color: #6c63ff;
-    margin-bottom: 10px;
-}
-
-/* Heading */
-.login-container h2 {
-    color: #2c3e50;
-    font-size: 26px;
-    margin-bottom: 25px;
-}
-
-/* Input groups */
-.input-group {
-    text-align: left;
-    margin-bottom: 18px;
-}
-
-.input-group label {
-    font-size: 14px;
-    font-weight: 500;
-    color: #2c3e50;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
+.btn-camera {
+    background: #4CAF50;
+    color: white;
+    padding: 8px 16px;
     border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    outline: none;
-    transition: 0.3s;
+    text-decoration: none;
+    margin-right: 20px;
 }
 
-.input-group input:focus {
-    border-color: #6c63ff;
-    box-shadow: 0 0 5px rgba(108, 99, 255, 0.4);
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-pic {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background: #fff;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background: #f2f2f2;
+}
+/* ===== Navbar Buttons ===== */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Common button style */
+.nav-btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 /* Login button */
 .login-btn {
-    width: 100%;
-    background-color: #3498db;
-    border: none;
-    color: white;
-    font-size: 15px;
-    padding: 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 10px;
-    transition: 0.3s;
+    color: #ffffff;
+    border: 2px solid #ffffff;
 }
 
 .login-btn:hover {
-    background-color: #2980b9;
+    background-color: #ffffff;
+    color: #2c3e50;
 }
 
-/* Flash messages */
-.flash-messages {
-    margin-bottom: 15px;
+/* Signup button */
+.signup-btn {
+    background-color: #4CAF50;
+    color: #ffffff;
 }
 
-.flash {
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 8px;
+.signup-btn:hover {
+    background-color: #43a047;
+}
+/* ===== Navbar User Welcome ===== */
+
+.user-navbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-text {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* Profile image */
+.profile-pic {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ffffff55;
+}
+.detector-center {
+    height: calc(100vh - 160px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.welcome-user {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.detector-info {
+    font-size: 16px;
+    color: #d1d5db;
+    max-width: 600px;
+    margin-bottom: 25px;
+}
+
+.btn-open-camera {
+    background: #22c55e;
+    color: #ffffff;
+    padding: 14px 36px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-open-camera:hover {
+    background: #16a34a;
+    transform: scale(1.05);
+}
+
+.extra-info {
+    margin-top: 30px;
+}
+
+.extra-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.extra-info li {
     font-size: 14px;
+    margin: 6px 0;
+    color: #e5e7eb;
+}
+/* ===== RIGHT SIDE HOME DETECTOR ===== */
+
+.home-right-wrapper {
+    height: calc(100vh - 160px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.right-detector {
+    width: 380px;
+    background: #34495e;
+    border-radius: 16px;
+    padding: 18px;
+    color: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+.right-detector h3 {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* Camera Box */
+.camera-box {
+    width: 100%;
+    height: 240px;
+    background: black;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid #22c55e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Buttons */
+.detector-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.det-btn {
+    width: 48%;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.det-btn.start {
+    background: #22c55e;
+    color: white;
+}
+
+.det-btn.stop {
+    background: #ef4444;
+    color: white;
+}
+
+.det-btn:hover {
+    transform: scale(1.05);
+}
+/* Detector Page Layout */
+.detector-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* Left Panel */
+.detector-controls {
+    width: 260px;
+    background: #1f2d3d;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.detector-controls h2 {
+    margin-bottom: 20px;
     color: #fff;
 }
 
-.flash.success { background-color: #27ae60; }
-.flash.danger  { background-color: #e74c3c; }
-.flash.info    { background-color: #2980b9; }
+/* Buttons */
+.control-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-/* Bottom text */
-.bottom-text {
+.control-btn.start {
+    background: #2ecc71;
+    color: #000;
+}
+
+.control-btn.stop {
+    background: #e74c3c;
+    color: #fff;
+}
+
+/* Feature list */
+.features {
+    list-style: none;
+    padding: 0;
     margin-top: 20px;
-    font-size: 14px;
-    color: #555;
+    color: #ddd;
 }
 
-.bottom-text a {
-    color: #3498db;
-    text-decoration: none;
+.features li {
+    margin: 10px 0;
 }
 
-.bottom-text a:hover {
-    text-decoration: underline;
+/* Camera Panel */
+.detector-camera {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
+.camera-frame {
+    width: 720px;
+    height: 420px;
+    border-radius: 16px;
+    border: 3px solid #2ecc71;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Camera Image */
+.camera-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.detector-container {
+    display: flex;
+    gap: 40px;
+}
+
+.controls {
+    width: 250px;
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.controls button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.start { background: #22c55e; }
+.stop { background: #ef4444; }
+
+.camera-box img {
+    width: 700px;
+    border: 3px solid #22c55e;
+    border-radius: 10px;
+}/* ===== Camera Container ===== */
+.camera-wrapper {
+    width: 640px;
+    height: 350px;
+    border: 3px solid #2ecc71;
+    border-radius: 12px;
+    background: black;
+    position: relative;
+    overflow: hidden;
+}
+.camera-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.camera-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay canvas */
+#overlay-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Green border glow */
+.camera-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    box-shadow: 0 0 12px rgba(46, 204, 113, 0.8);
+    pointer-events: none;
+}
+.detector-container {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+}
+
+.controls {
+    width: 260px;
+    background: #1f2f3f;
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+}
+
+.controls button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.start { background: #2ecc71; }
+.stop  { background: #e74c3c; }
+
+.camera-box {
+    position: relative;
+    width: 720px;
+    height: 420px;
+    background: black;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 3px solid #2ecc71;
+    box-shadow: 0 0 15px rgba(46,204,113,0.8);
+}
+
+#camera-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#overlay-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

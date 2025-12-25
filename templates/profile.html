@@ -1,0 +1,10 @@
+{% extends "home.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block main %}
+<h2>User Profile</h2>
+
+<p><strong>Email:</strong> {{ current_user.email }}</p>
+
+{% endblock %}
